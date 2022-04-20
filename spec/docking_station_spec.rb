@@ -11,7 +11,8 @@ describe DockingStation do
     expect(docking_station.release_bike).to be_a Bike
   end
   it "should dock bike" do
-    expect(docking_station.dock(bike))
+    empty_docking_station = DockingStation.new(nil)
+    expect(empty_docking_station.dock(bike))
   end
   it "should display bikes" do
     expect(docking_station.bikes).to eq [bike]
@@ -20,4 +21,7 @@ describe DockingStation do
     empty_docking_station = DockingStation.new(nil)
     expect { empty_docking_station.release_bike }.to raise_error(StandardError)
   end
+  it "dock should return an error when docking station full" do
+    expect { docking_station.dock(Bike.new) }.to raise_error(StandardError)
+  end 
 end

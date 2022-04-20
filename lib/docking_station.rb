@@ -16,5 +16,12 @@ class DockingStation
   end 
 
   def dock(bike)
+    if @bikes.any? do |bike|
+      bike.instance_of?(Bike)
+      end 
+      raise StandardError
+    else  
+      @bikes << Bike.new 
+    end 
   end
 end
