@@ -16,4 +16,8 @@ describe DockingStation do
   it "should display bikes" do
     expect(docking_station.bikes).to eq [bike]
   end
+  it "release bike should return error when none available" do
+    empty_docking_station = DockingStation.new(nil)
+    expect { empty_docking_station.release_bike }.to raise_error(StandardError)
+  end
 end
